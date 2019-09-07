@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content%}
+ <h1>Events detail</h1>
+ <ul>
+     <li><b>{{notice.subject}}</b></li>
+     <li>{{notice.cr_date}}}</li>
+     <li>{{notice.msg}}</li>
+    
+ </ul>
+ <a href="/students/notice">Back</a>
+
+{% endblock %}
