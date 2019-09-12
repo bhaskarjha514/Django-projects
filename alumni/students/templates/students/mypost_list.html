@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load static %}
+{% block search%}
+  <form class="form-inline my-2 my-lg-0">
+      
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="si" value="{{ request.GET.si }}">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    
+  </form>
+
+  {% endblock %}  
+{% block content%}
+<div class="p-5">
+  <h1>My Post : </h1>
+  <a class="btn btn-outline-dark" href="/students/mypost/create" role="button">Add Post</a>
+  
+  <hr>
+<table class="table  my-3">
+    <thead class="thead-dark">
+      <tr>
+        <th>Subject</th>
+        <th>Date</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    {% for n1 in mypost_list %}
+       <tr>
+         <td>{{n1.subject}}</td>
+         <td>{{n1.cr_date | date:"d/m/y"}}</td>
+         <td>
+           <a class="btn btn-dark btn-sm" href="/students/mypost/{{n1.id}}">Read More</a>
+           <a class="btn btn-danger btn-sm" href="/students/mypost/delete/{{n1.id}}">Delete</a>
+           
+        
+        </td>
+         
+       </tr>
+
+    {% endfor %}
+  
+ </table> 
+   </div>
+ 
+{% endblock %}

@@ -37,9 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'registration',
     'students',
-    
+    'crispy_forms',
+    'registration',
 ]
 
 MIDDLEWARE = [
@@ -118,9 +118,14 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
+# Managing media
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+MEDIA_URL = '/media/'
+
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = "/home/bhask/Desktop/alumni/students/static/"
 
 ACCOUNT_ACTIVATION_DAYS=3
 
