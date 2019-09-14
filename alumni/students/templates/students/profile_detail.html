@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content%}
+ <h1>Profile : </h1>
+ <hr>
+  <div class="col-sm-2">
+        <div class="card" style="width: 25rem; ">
+             <img src="/media/{{profile.pic}}" class="card-img-top rounded-top" alt="...">
+             <div class="card-body" >
+               
+                   <h5 class="card-title" style="background-color:silver;">Name : {{profile.name}}</h5>
+                   <h5 class="card-title">Username : {{profile.user}}</h5>
+                   <h5 class="card-title">Branch : {{profile.branch}}</h5>
+                   <h5 class="card-title">Current Job : {{profile.current_job}}</h5>
+                   <h5 class="card-title">Life Skills : {{profile.skill}}</h5>
+                   <h5 class="card-title">Phone no : {{profile.phone_no}}</h5>
+                   <h5 class="card-title">Age : {{profile.age}}</h5>
+                   <h5 class="card-title">Gender : {{profile.gender}}</h5>
+                   <h5 class="card-title">Address : {{profile.address}}</h5>
+                   <h5 class="card-title">Status : {{profile.status}}</h5>
+                   <p class="card-text"><b> Description : {{profile.description}}</b></p>
+               
+                  <br>
+               
+               <a href="/students/profiles" class="btn btn-outline-dark">Back</a>
+             </div>
+           </div>
+        
+           </div>
+
+{% endblock %}

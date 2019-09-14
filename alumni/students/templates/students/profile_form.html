@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+
+<body style="background-color: rgb(90, 206, 196);" >
+    <main class="p-5">
+        <div class="row">
+          <div class="col-sm-6 offset-sm-3">
+            <h1>Update Profile : </h1>
+            <hr>
+         
+        <form enctype="multipart/form-data" method="POST" action="">
+        {% csrf_token %}
+        {{form | crispy}} <br>
+        <button type="submit" class="btn btn-primary">Save</button>
+        <!-- <input class="btn btn-dark my-3" type="submit"> -->
+       
+        </form>
+        </main>
+    </div>
+</div>
+</body>
+
+
+{% endblock %}

@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.6/css/all.css">
+    <!-- <link rel="stylesheet" href="/static/style.css"/> -->
+   <style>
+   .myfooter{
+     font-size: 20px;
+     color: #eaebe9;
+     text-shadow: 5px 2px 2px rgb(1, 2, 0);
+     font-family: cursive;
+     font-weight: bolder;
+     background-color: rgb(46, 56, 47);
+     position: absolute;
+   }
+   
+   </style>
+    <title>Alumni System</title>
+    {% block style%}
+
+    {% endblock %}
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Alumni DataBase</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/students/home">Home <i class="fa fa-home" aria-hidden="true"></i> <span class="sr-only">(current)</span></a>
+            </li>
+            {% if user.is_authenticated %}
+            <li class="nav-item ">
+                <a class="nav-link" href="/students/notice">Events</a>
+              </li>
+              {% else %}
+              <li class="nav-item">
+                <a class="nav-link" href="/accounts/login">Events</a>
+              </li>
+             {% endif %}
+              <!-- <li class="nav-item">
+                  {% if user.is_authenticated %}
+                 <a class="nav-link" href="/students/profiles">Profile</a>
+                 {% endif %}
+               </li> -->
+             <li class="nav-item">
+              {% if user.is_authenticated %}
+              <a class="nav-link" href="/accounts/logout">Logout <i class="fa fa-sign-out-alt" aria-hidden="true"></i></a>
+              
+              {% else %}
+              <a class="nav-link" href="/accounts/login">Login <i class="fas fa-sign-in-alt"></i> </a>
+              {% endif %}
+             </li>
+             <li class="nav-item">
+                <!-- {% if user.is_authenticated %}
+              <a class="nav-link" href="/students/mypost/">My Post</a>
+              {% endif %} -->
+             </li>
+             <li class="nav-item">
+               {% if user.is_superuser %}
+                <a class="nav-link" href="/admin">Admin</a>
+               {% else %}
+                  {% if user.is_authenticated %}
+                  <a class="nav-link" href="/students/mypost/">My Post</a>
+                  <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                       Your Profile
+                      </a>
+                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      
+                       <a class="dropdown-item" href="/students/profiles">Profile <span style="padding-inline-start: 4px" class="fa fa-user"></span> </a>
+                       <a class="dropdown-item" href="/students/profile/edit/{{ user.profile.id }}">Edit Profile <span class="fas fa-address-card"></span> </a>
+                      </li>
+              
+               {% endif %}
+               {% endif %} 
+            
+            <li class="nav-item">
+              <a class="nav-link" href="/students/about">About us</a>
+            </li>
+            
+          </ul>
+
+          
+          {% block search %}
+
+          {% endblock %}
+        </div>
+      </nav>
+    
+       {% block content%}
+       {% endblock %}
+
+       <!-- <footer class="myfooter text-center p-2">
+         <p> Copyright @ Alumni DataBase</p> -->
+
+       </footer>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    {% block script%}
+
+    {% endblock %}
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
