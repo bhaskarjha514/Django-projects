@@ -16,16 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic.base import RedirectView
-from . import settings
-from students import views
-from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('students/', include('students.urls'),name="student"),
-    path('', RedirectView.as_view(url='students/')),
-    # path('students/', views.HomeView.as_view()),
+    path('students/', include('students.urls')),
     path('accounts/', include('registration.backends.default.urls')),
-    
-  
-] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+    path('', RedirectView.as_view(url='students/')),
+]
