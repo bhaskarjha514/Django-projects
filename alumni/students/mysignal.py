@@ -16,9 +16,9 @@ def save_profile(sender, instance, created, **kwarg ):
 def sendmail(sender, instance, created, **kwarg ):
     if created:
         emails = User.objects.values_list('email', flat=True)
-        message = instance.subject
+        message = instance.msg
         for email in emails:
-            send_mail('contact form',
+            send_mail(instance.subject,
             message,
             settings.EMAIL_HOST_USER,
             [email],
