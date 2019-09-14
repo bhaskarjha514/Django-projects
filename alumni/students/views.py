@@ -31,13 +31,9 @@ def follow(req, pk):
     user = Profile.objects.get(pk=pk)
     FollowUser.objects.create(profile=user, followed_by = req.user.profile)
     return HttpResponseRedirect(redirect_to="/students/profiles")
-    
-# class ProfileView(TemplateView):
-#     template_name = "students/profile.html"
 
 class NoticeListView(ListView):
     model = Notice
-    
     def get_queryset(self):
         si = self.request.GET.get("si")
         if si == None:
