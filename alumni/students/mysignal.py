@@ -23,6 +23,23 @@ def sendmail(sender, instance, created, **kwarg ):
             settings.EMAIL_HOST_USER,
             [email],
             fail_silently = False)
-        
+
+#@receiver(post_save, sender=Notice)
+#def sendmail(sender, instance, created, **kwarg ):
+   # if created:
+        #emails = User.objects.values_list('email', flat=True)
+       # branches = Profile.objects.values_list('branch', flat=True)
+        #message = instance.msg
+        #i=0
+        #some=instance.branch
+        #for branch in branches:
+            #if branch == some:
+               # emailid= emails[i]
+                #send_mail(instance.subject,
+              #  message,
+               # settings.EMAIL_HOST_USER,
+               # [emailid],
+                #fail_silently = False)
+           # i+=1    
         # Profile.objects.create(user=instance)
         
