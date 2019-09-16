@@ -63,8 +63,8 @@ class PostLike(models.Model):
         return "%s" %self.liked_by
 
 class FollowUser(models.Model):
-    profile = models.ForeignKey(to=Profile, on_delete=CASCADE)
-    followed_by = models.ForeignKey(to=User, on_delete=CASCADE)
+    profile = models.ForeignKey(to=Profile, on_delete=CASCADE, related_name = "profile")
+    followed_by = models.ForeignKey(to=Profile, on_delete=CASCADE, related_name = "followed_by")
     def __str__(self):
         return "%s" %self.followed_by
 
