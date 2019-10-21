@@ -46,6 +46,7 @@ class MyPost(models.Model):
     msg = models.TextField(null=True, blank=True)
     cr_date = models.DateTimeField(auto_now_add = True)
     uploaded_by = models.ForeignKey(to=Profile, on_delete=CASCADE, null=True, blank=True)
+
     def __str__(self):
         return "%s" %self.subject
 

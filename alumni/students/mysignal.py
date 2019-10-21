@@ -28,10 +28,6 @@ def sendmail(sender, instance, created, **kwarg ):
             [email],
             fail_silently = False)
 
-                
-
-            
-
         # for email in emails:
         #     send_mail(instance.subject,
         #     message,
@@ -39,11 +35,6 @@ def sendmail(sender, instance, created, **kwarg ):
         #     [email],
         #     fail_silently = False)
         
-        
-        
-        
-            
-
 # branchuser = Profile.objects.values_list('branch',flat=True)
         # message = instance.subject
         # msgbranch = instance.branch
@@ -67,8 +58,6 @@ def sendmail(sender, instance, created, **kwarg ):
 #             settings.EMAIL_HOST_USER,
 #             [email],
 #             fail_silently = False)
-
-
 
 #   emails = User.objects.values_list('email', flat=True)
 #         message = instance.msg

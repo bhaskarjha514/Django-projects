@@ -9,31 +9,52 @@
   </form>
 
   {% endblock %}  
+  {% block backgroundcss%}
+   style="background-color: #D3D3D3;"
+  {% endblock %}
 {% block content%}
 
+
   <h1>My Post : </h1>
-  <a style="padding-inline-end: 12px" class="btn btn-outline-dark" href="/students/mypost/create">New Post<span style="padding-inline-start: 8px" class="fa fa-plus"></span> </a>
+  <a style="padding-inline-end: 12px; margin-left: 10px;" class="btn btn-outline-dark" href="/students/mypost/create">New Post<span style="padding-inline-start: 8px" class="fa fa-plus"></span> </a>
   <hr>
      
 <div class="p-5">
     {% for n1 in mypost_list %}
-  <div class="col-sm-5 offset-sm-4"> 
-<div class="card w-50">
+  <div class="col-sm-4 offset-sm-4"> 
+<div class="card w-55">
   
   <div class="card-body;">
      <div class="col">
-        <h6 style="margin-left:20px;">{{n1.cr_date | date:"d/m/y"}}</h6>
-        <h3>{{n1.msg}}</h3>
-        <a style="margin-top: 5px;" href="/students/mypost/{{n1.id}}"><img style="width: 100%; height: aouto;border-radius: 3%;" src='/media/{{n1.pic}}' alt=""></a>
-     
+        <div class="row">
+        <a href="/students/profiles/{{ user.profile.id }}"><h4 style="margin-left:10px;"> {{n1.uploaded_by}}</h4></a>
+          <a style="margin-left: 420px;" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i style="color: dimgray;" class="fas fa-ellipsis-h"></i>
+            </a>
+           <div style="margin-left: -131px;" class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+            <a onMouseOver="this.style.color='#FFFFFF'; this.style.backgroundColor='#0f5ef2'"onMouseOut="this.style.color='#000000';this.style.backgroundColor='#FFFFFF'" style="padding-left: 0px;" class="dropdown-item" href="/students/mypost/edit/{{n1.id}}"><span style="padding-inline-start: 8px">Edit post</span> </a>
+            
+            <a onMouseOver="this.style.color='#FFFFFF'; this.style.backgroundColor='#0f5ef2'"onMouseOut="this.style.color='#000000';this.style.backgroundColor='#FFFFFF'" style="padding-left: 8px;" class="dropdown-item" href="/students/mypost/delete/{{n1.id}}">Delete<span style="padding-inline-start: 8px" class="far fa-trash-alt"></span> </a>
+           
+          </div>
+         </div>
+      <h6 style="margin-left:-5px;margin-top: -6px; ">{{n1.cr_date | date:"d/m/y"}}</h6>
+      <h4>{{n1.msg}}</h4>
+        <hr>  
+      <a href="/students/mypost/{{n1.id}}"><img style="width: 100%; height: aouto;border-radius: 3%;" src='/media/{{n1.pic}}'></a> 
+      <hr>
+    <div class="row">
       
+        <i style="margin-left: 70px;" class="far fa-thumbs-up col-sm-3"> Like</i>
+        <i  class="far fa-comment col-sm-4"> Comments</i>
+        <i class="far fa-share-square "> Share</i>
     </div>
-    
-    <div class="row"> 
-        
-    <a style="padding-inline-end: 12px" class="btn btn-outline-danger btn-sm" href="/students/mypost/delete/{{n1.id}}">Delete <span style="padding-inline-start: 8px" class="far fa-trash-alt"></span> </a>
-    <a style="padding-inline-end: 12px" class="btn btn-outline-danger btn-sm" href="/students/mypost/edit/{{n1.id}}">Edit<span style="padding-inline-start: 8px" class="far fa-trash-alt"></span> </a>
-    </div>
+    <hr>
+    <form action="Post">
+      
+      <input style="border-radius: 20px; border: 1px solid #D3D3D3;padding-left: 10px; padding-right: 250px; margin-bottom: 8px;margin-left: 45px;" type="text" placeholder="Write a comment...">
+    </form>
     
   </div>
 </div>

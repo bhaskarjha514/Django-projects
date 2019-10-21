@@ -125,4 +125,7 @@ class PostsListView(ListView): # for all post of all user that i have to modify 
 @method_decorator(login_required, name="dispatch")
 class OtherPostListView(ListView):
     model = MyPost
+@method_decorator(login_required, name="dispatch")
+class OtherPostListView(TemplateView):
+    template_name = "students/index.html"
 
