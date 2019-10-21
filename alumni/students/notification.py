@@ -24,3 +24,26 @@
 
 
 
+# emails = User.objects.values_list('email' ,flat=True)
+#         message = instance.subject
+#         i=0
+#         branchuser = Profile.objects.values_list('branch',flat=True)
+#         for branches in branchuser:
+#             if branches==instance.branch:
+#                 emailid= emails[i]
+#                 #loopof email
+#                 send_mail('contact form',
+#                 message,
+#                 settings.EMAIL_HOST_USER,
+#                 [emailid],
+#                 fail_silently = False)
+#                 i+=1
+
+emails=[10,20,30,40]
+branches=["cse","me","civil","cse"]
+i=0
+
+for branch in branches:
+    if branch=="cse":
+        print(emails[i])
+    i+=1

@@ -9,12 +9,11 @@
   {% endblock %}  
 {% block content%}
 
-<u><h1>Events {% if user.is_superuser %}<a style="margin-inline-start: 20px;" class= "btn btn-primary" href="http://127.0.0.1:8000/admin/students/notice/add/">New Event</a> {% endif %}  </h1></u>
-  
-  
+<u><h1>Events {% if user.is_superuser %}<a style="margin-inline-start: 1650px;" class= "btn btn-primary" href="http://127.0.0.1:8000/admin/students/notice/add/">New Event</a> {% endif %}  </h1></u>
+  <a class="btn btn-outline-dark" href="/students/memories/albums">Album</a>
    <div class="row">
         
-   {% for n1 in notice_list %}
+   {% for n1 in albums_list %}
  
    <div class="col-sm-2">
      
@@ -22,9 +21,9 @@
         <div class="card" style="width: 18rem; ">
              <img src='/media/{{n1.image}}' class="card-img-top rounded-top" alt="..." style="width:286px;height:250px";>
              <div class="card-body" >
-               <h5 class="card-title">{{n1.subject}}</h5>
+               <h5 class="card-title">{{n1.meetupplace}}</h5>
                
-               <a href="/students/notice/{{n1.id}}" class="btn btn-outline-dark">Know More</a>
+               <a href="/students/memories/albums/{{n1.id}}" class="btn btn-outline-dark">more</a>
              </div>
            </div>
         </div>

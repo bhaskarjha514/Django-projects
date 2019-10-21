@@ -1,13 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
 about
-{% if user.is_superuser %}
+
+<!-- {% if user.is_authenticated %}
 <h3>Contact Form : </h3>
 <form method="post" action="{% url 'about' %}">
     {% csrf_token %}
     <textarea name="message" id="" cols="30" rows="10"></textarea>
     <input type="submit">
 </form>
-{% endif %}
+{% endif %} -->
+
 
 {% endblock %}

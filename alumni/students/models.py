@@ -8,7 +8,7 @@ class Branch(models.Model):
     hod = models.CharField(max_length=100)
     batch = models.CharField(max_length=30,default="")
     def __str__(self):
-        return "%s (%s)" % (self.name, self.hod)
+        return "%s" %self.name
 
 class Notice(models.Model):
     subject = models.CharField(max_length=100)
@@ -16,7 +16,8 @@ class Notice(models.Model):
     cr_date = models.DateTimeField(auto_now_add=True)
     branch = models.ForeignKey(to=Branch, on_delete=CASCADE, null=True, blank=True)
     image = models.ImageField(upload_to="students/notice/images",blank=True,null=True)
-    
+    venue = models.TextField(null=True)
+    contact_detail = models.TextField(null=True)
     
 
 class Profile(models.Model):
@@ -32,8 +33,10 @@ class Profile(models.Model):
     gender = models.CharField(max_length=20, default="female", choices=(("male","male"),("female","female")))
     address = models.TextField(null=True)
     current_job = models.TextField(null=True)
+
     def __str__(self):
-        return "%s (%s)" % (self.user.username, self.branch)
+        # return "%s (%s)" % (self.user.username, self.branch)
+        return "%s" %self.user.username
     # def __str__(self):
     #     return self.subject
 
@@ -46,6 +49,20 @@ class MyPost(models.Model):
     def __str__(self):
         return "%s" %self.subject
 
+class Memories(models.Model):
+    image = models.ImageField(upload_to="students/memories")
+    # memoriesalbum = models.ForeignKey(to=MemoriesPic,on_delete=CASCADE)
+
+# class MemoriesPic (models.Model):
+#     image = models.ImageField(upload_to ="students/memories/Albums")
+
+class Albums(models.Model):
+    image = models.ImageField(upload_to ="students/memories/Albums")
+    meetupplace = models.CharField(max_length =200)
+    # MemoriesPic = models.OneToOneField(to=MemoriesPic, on_delete=CASCADE)
+    def __str_(self):
+        return "%s" %self.meetupplace
+       
 class PostComment(models.Model):
     post = models.ForeignKey(to=MyPost, on_delete=CASCADE)
     msg = models.TextField()
@@ -63,8 +80,8 @@ class PostLike(models.Model):
         return "%s" %self.liked_by
 
 class FollowUser(models.Model):
-    profile = models.ForeignKey(to=Profile, on_delete=CASCADE, related_name = "profile")
-    followed_by = models.ForeignKey(to=Profile, on_delete=CASCADE, related_name = "followed_by")
+    profile = models.ForeignKey(to=Profile, on_delete=CASCADE, related_name="profile")
+    followed_by = models.ForeignKey(to=Profile, on_delete=CASCADE, related_name ="followed_by")
     def __str__(self):
         return "%s" %self.followed_by
 

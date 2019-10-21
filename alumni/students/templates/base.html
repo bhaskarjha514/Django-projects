@@ -9,22 +9,23 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.6/css/all.css">
     <!-- <link rel="stylesheet" href="/static/style.css"/> -->
+    {% block design%}
+
+    {% endblock %}
    <style>
-   .myfooter{
-     font-size: 20px;
-     color: #eaebe9;
-     text-shadow: 5px 2px 2px rgb(1, 2, 0);
-     font-family: cursive;
-     font-weight: bolder;
-     background-color: rgb(46, 56, 47);
-     position: absolute;
-   }
-   
-   </style>
+     
+     
+     /* body{
+       background : "123.jpg";
+        background-repeat:no-repeat;
+       background-size:cover;
+     } */
+  </style>
     <title>Alumni System</title>
     {% block style%}
 
     {% endblock %}
+    
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -39,25 +40,28 @@
               <a class="nav-link" href="/students/home">Home <i class="fa fa-home" aria-hidden="true"></i> <span class="sr-only">(current)</span></a>
             </li>
             {% if user.is_authenticated %}
-            <li class="nav-item ">
-                <a class="nav-link" href="/students/notice">Events</a>
+            <li class="nav-item active">
+                <a class="nav-link" href="/students/notice">Events <span class="sr-only">(current)</span></a>
               </li>
               {% else %}
-              <li class="nav-item">
-                <a class="nav-link" href="/accounts/login">Events</a>
+              <li class="nav-item active">
+                <a class="nav-link" href="/accounts/login">Events  <span class="sr-only">(current)</span></a>
               </li>
              {% endif %}
+             <li class="  nav-item active">
+               <a class="nav-link" href="/students/memories">Memories</a>
+             </li>
               <!-- <li class="nav-item">
                   {% if user.is_authenticated %}
                  <a class="nav-link" href="/students/profiles">Profile</a>
                  {% endif %}
                </li> -->
-             <li class="nav-item">
+             <li class="nav-item active">
               {% if user.is_authenticated %}
-              <a class="nav-link" href="/accounts/logout">Logout <i class="fa fa-sign-out-alt" aria-hidden="true"></i></a>
+              <a class="nav-link" href="/accounts/logout">Logout <i class="fa fa-sign-out-alt" aria-hidden="true"></i> <span class="sr-only">(current)</span></a>
               
               {% else %}
-              <a class="nav-link" href="/accounts/login">Login <i class="fas fa-sign-in-alt"></i> </a>
+              <a class="nav-link" href="/accounts/login">Login <i class="fas fa-sign-in-alt"></i>  <span class="sr-only">(current)</span></a>
               {% endif %}
              </li>
              <li class="nav-item">
@@ -65,29 +69,38 @@
               <a class="nav-link" href="/students/mypost/">My Post</a>
               {% endif %} -->
              </li>
-             <li class="nav-item">
+             <li class="nav-item active">
                {% if user.is_superuser %}
-                <a class="nav-link" href="/admin">Admin</a>
+                <a class="nav-link" href="/admin">Admin <span class="sr-only">(current)</span></a>
                {% else %}
                   {% if user.is_authenticated %}
-                  <a class="nav-link" href="/students/mypost/">My Post</a>
-                  <li class="nav-item dropdown">
+                  <a class="nav-link" href="/students/mypost/">My Post <span class="sr-only">(current)</span></a>
+                  
+                  
+                
+                  <li class="nav-item dropdown nav-item active" >
                       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                       Your Profile
+                      Profile <span class="sr-only">(current)</span>
                       </a>
                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      
-                       <a class="dropdown-item" href="/students/profiles">Profile <span style="padding-inline-start: 4px" class="fa fa-user"></span> </a>
-                       <a class="dropdown-item" href="/students/profile/edit/{{ user.profile.id }}">Edit Profile <span class="fas fa-address-card"></span> </a>
-                      </li>
+                      <a class="dropdown-item" href="/students/profiles/{{ user.profile.id }}">Your Profile <span style="padding-inline-start: 4px" class="fa fa-user"></span> </a>
+                      <a class="dropdown-item" href="/students/profile/edit/{{ user.profile.id }}">Edit Profile <span class="fas fa-address-card"></span> </a>  
+                    </li>
               
                {% endif %}
                {% endif %} 
             
-            <li class="nav-item">
-              <a class="nav-link" href="/students/about">About us</a>
+            <li class="nav-item active">
+              <a class="nav-link" href="/students/about">About us <span class="sr-only">(current)</span>  </a>
             </li>
+            {% if user.is_authenticated %}
+            <li class="nav-item active">
             
+          </li>
+          <li class="nav-item active">
+          <a class="nav-link" href="/students/profiles">Friends <span style="padding-inline-start: 4px" class="fa fa-user"></span> </a>
+          </li>
+          {% endif %}
           </ul>
 
           

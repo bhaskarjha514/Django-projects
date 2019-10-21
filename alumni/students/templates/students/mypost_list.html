@@ -10,38 +10,35 @@
 
   {% endblock %}  
 {% block content%}
-<div class="p-5">
-  <h1>My Post : </h1>
-  
-  <a style="padding-inline-end: 12px" class="btn btn-outline-dark" href="/students/mypost/create">New Post<span style="padding-inline-start: 8px" class="fa fa-plus"></span> </a>
-  
-  <hr>
-<table class="table  my-3">
-    <thead class="thead-dark">
-      <tr>
-        <th>Subject</th>
-        <th>Date</th>
-        <th>Action</th>
-        <th></th>
-      </tr>
-    </thead>
-    {% for n1 in mypost_list %}
-       <tr>
-         <td>{{n1.subject}}</td>
-         <td>{{n1.cr_date | date:"d/m/y"}}</td>
-         <td>
-           <a class="btn btn-dark btn-sm" href="/students/mypost/{{n1.id}}">Read More</a>
-           
-           
-        
-        </td>
-        <td><a style="padding-inline-end: 12px" class="btn btn-outline-danger btn-sm" href="/students/mypost/delete/{{n1.id}}">Delete <span style="padding-inline-start: 8px" class="far fa-trash-alt"></span> </a></td>
-         
-       </tr>
 
-    {% endfor %}
+  <h1>My Post : </h1>
+  <a style="padding-inline-end: 12px" class="btn btn-outline-dark" href="/students/mypost/create">New Post<span style="padding-inline-start: 8px" class="fa fa-plus"></span> </a>
+  <hr>
+     
+<div class="p-5">
+    {% for n1 in mypost_list %}
+  <div class="col-sm-5 offset-sm-4"> 
+<div class="card w-50">
   
- </table> 
-   </div>
- 
+  <div class="card-body;">
+     <div class="col">
+        <h6 style="margin-left:20px;">{{n1.cr_date | date:"d/m/y"}}</h6>
+        <h3>{{n1.msg}}</h3>
+        <a style="margin-top: 5px;" href="/students/mypost/{{n1.id}}"><img style="width: 100%; height: aouto;border-radius: 3%;" src='/media/{{n1.pic}}' alt=""></a>
+     
+      
+    </div>
+    
+    <div class="row"> 
+        
+    <a style="padding-inline-end: 12px" class="btn btn-outline-danger btn-sm" href="/students/mypost/delete/{{n1.id}}">Delete <span style="padding-inline-start: 8px" class="far fa-trash-alt"></span> </a>
+    <a style="padding-inline-end: 12px" class="btn btn-outline-danger btn-sm" href="/students/mypost/edit/{{n1.id}}">Edit<span style="padding-inline-start: 8px" class="far fa-trash-alt"></span> </a>
+    </div>
+    
+  </div>
+</div>
+</div>
+<br>
+{% endfor %}
+</div>
 {% endblock %}
