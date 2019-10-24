@@ -1,9 +1,5 @@
 from django.shortcuts import render
-<<<<<<< HEAD
 from . models import Notice ,Albums, Profile,FollowUser,MyPost,PostComment,PostLike,pictures
-=======
-from . models import Notice ,Albums, Profile,FollowUser,MyPost,PostComment,PostLike,Memories
->>>>>>> 0d49cea8e5ab538566f3a9dc1765ea1d84365c3a
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import UpdateView, CreateView
@@ -19,18 +15,14 @@ from django.core.mail import send_mail
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.forms import modelformset_factory
-<<<<<<< HEAD
 from django.http import HttpResponse
 from django.http import Http404
-=======
->>>>>>> 0d49cea8e5ab538566f3a9dc1765ea1d84365c3a
 
 # def home(request):
 #     return render(request,'students/index.html')
 class HomeView(TemplateView):
     template_name = "students/index.html"
 
-<<<<<<< HEAD
 # ***************************************************************************** Profile *********************************************************************
 class ProfileListView(ListView):
     model = Profile
@@ -39,10 +31,6 @@ class ProfileListView(ListView):
         if si == None:
             si = ""
         return Profile.objects.filter(Q(name__icontains = si)|Q(phone_no__icontains = si)).order_by("-id")
-=======
-# def memories(request):
-#     return render(request,'students/memories.html')
->>>>>>> 0d49cea8e5ab538566f3a9dc1765ea1d84365c3a
 
 @method_decorator(login_required, name="dispatch")
 class ProfileUpdateView(UpdateView):
@@ -58,69 +46,11 @@ def follow(req, pk):
     FollowUser.objects.create(profile=user, followed_by = req.user.profile)
     return HttpResponseRedirect(redirect_to="/students/profiles")
 
-<<<<<<< HEAD
 # ************************************************************************  End Profile *********************************************************************
 
 # *************************************************************************** Post *********************************************************************
-=======
-class MemoriesListView(ListView):
-    model = Memories
-
-class AlbumsListView(ListView):
-    model=Albums
-
-class NoticeListView(ListView):
-    model = Notice
-    def get_queryset(self):
-        si = self.request.GET.get("si")
-        if si == None:
-            si = ""
-        if self.request.user.is_superuser:
-            return Notice.objects.filter(Q(subject__icontains = si)|Q(msg__icontains = si)).order_by("-id")
-        else:
-            return Notice.objects.filter(Q(branch=self.request.user.profile.branch) | Q(branch__isnull=True)).filter(Q(subject__icontains = si)|Q(msg__icontains = si))   .order_by("-id")
-        
-def about(request):
-    # if request.method == 'POST':
-    #         message = request.POST['message']
-    #         send_mail('contact form',
-    #         message,
-    #         request.user.email,
-    #         ['admindatabase.123@gmail.com'],
-    #         fail_silently = False)
-    return render(request, 'students/about.html')
-        
-        
-@method_decorator(login_required, name="dispatch")
-class NoticeDetailListView(DetailView):
-    model = Notice
->>>>>>> 0d49cea8e5ab538566f3a9dc1765ea1d84365c3a
-
-class AlbumsDetailView(DetailView):
-    model = Albums
-
-#                                    ******************************   Profile  ***************************
-class ProfileListView(ListView):
-    model = Profile
-    def get_queryset(self):
-        si = self.request.GET.get("si")
-        if si == None:
-            si = ""
-        return Profile.objects.filter(Q(name__icontains = si)|Q(phone_no__icontains = si)).order_by("-id")
 
 @method_decorator(login_required, name="dispatch")
-<<<<<<< HEAD
-=======
-class ProfileUpdateView(UpdateView):
-    model = Profile
-    fields = ["name","user","age","branch","skill","phone_no","pic","description","status","gender","address","current_job"] 
-
-@method_decorator(login_required, name="dispatch")
-class ProfileDetailView(DetailView):
-    model = Profile
-#                                     ************************************ Post ***************************
-@method_decorator(login_required, name="dispatch")
->>>>>>> 0d49cea8e5ab538566f3a9dc1765ea1d84365c3a
 class MyPostUpdateView(UpdateView):
     model = MyPost
     fields = ["pic","subject","msg"] 
@@ -152,7 +82,6 @@ class MyPostDetailView(DetailView):
 class MyPostDeleteView(DeleteView):
     model = MyPost
 
-<<<<<<< HEAD
 # ***********************************************************************  End Post *********************************************************************
 
 #  *********************************************************************** Gallery ********************************************************************
@@ -239,15 +168,4 @@ def profiledetailview(request,pk):
 
 
 
-=======
-class PostsListView(ListView): # for all post of all user that i have to modify something in it more
-    model = MyPost
-
-@method_decorator(login_required, name="dispatch")
-class OtherPostListView(ListView):
-    model = MyPost
-@method_decorator(login_required, name="dispatch")
-class OtherPostListView(TemplateView):
-    template_name = "students/index.html"
->>>>>>> 0d49cea8e5ab538566f3a9dc1765ea1d84365c3a
 

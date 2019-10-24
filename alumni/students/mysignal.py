@@ -1,11 +1,7 @@
 from django.dispatch.dispatcher import receiver
 from django.db.models.signals import post_save
 from django.contrib.auth.models import User
-<<<<<<< HEAD
 from . models import Notice,Profile
-=======
-from . models import Notice,Memories, Profile
->>>>>>> 0d49cea8e5ab538566f3a9dc1765ea1d84365c3a
 from django.core.mail import send_mail
 from django.conf import settings
 
