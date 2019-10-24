@@ -50,8 +50,13 @@ class MyPost(models.Model):
     def __str__(self):
         return "%s" %self.subject
 
+<<<<<<< HEAD
 # class Memories(models.Model):
 #     image = models.ImageField(upload_to="students/memories")
+=======
+class Memories(models.Model):
+    image = models.ImageField(upload_to="students/memories")
+>>>>>>> 0d49cea8e5ab538566f3a9dc1765ea1d84365c3a
     # memoriesalbum = models.ForeignKey(to=MemoriesPic,on_delete=CASCADE)
 
 # class MemoriesPic (models.Model):
@@ -62,12 +67,17 @@ class Albums(models.Model):
     meetupplace = models.CharField(max_length =200)
     # MemoriesPic = models.OneToOneField(to=MemoriesPic, on_delete=CASCADE)
     def __str_(self):
+<<<<<<< HEAD
         return self.meetupplace
 
 class pictures(models.Model):
     album = models.ForeignKey(to=Albums,on_delete=CASCADE)
     pic = models.ImageField(upload_to="students/memories/Albums")
 
+=======
+        return "%s" %self.meetupplace
+       
+>>>>>>> 0d49cea8e5ab538566f3a9dc1765ea1d84365c3a
 class PostComment(models.Model):
     post = models.ForeignKey(to=MyPost, on_delete=CASCADE)
     msg = models.TextField()

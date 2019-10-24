@@ -10,7 +10,11 @@
 
   {% endblock %}  
   {% block backgroundcss%}
+<<<<<<< HEAD
    style="background-color: #FFFF;"
+=======
+   style="background-color: #D3D3D3;"
+>>>>>>> 0d49cea8e5ab538566f3a9dc1765ea1d84365c3a
   {% endblock %}
 {% block content%}
 
@@ -18,15 +22,28 @@
   <h1>My Post : </h1>
   <a style="padding-inline-end: 12px; margin-left: 10px;" class="btn btn-outline-dark" href="/students/mypost/create">New Post<span style="padding-inline-start: 8px" class="fa fa-plus"></span> </a>
   <hr>
+<<<<<<< HEAD
   <div class="col-sm-4 offset-sm-4"> 
     {% for n1 in mypost_list %}
     <div class="shadow mb-4 bg-white">
 <div class="card w-55">
+=======
+     
+<div class="p-5">
+    {% for n1 in mypost_list %}
+  <div class="col-sm-4 offset-sm-4"> 
+<div class="card w-55">
+  
+>>>>>>> 0d49cea8e5ab538566f3a9dc1765ea1d84365c3a
   <div class="card-body;">
      <div class="col">
         <div class="row">
         <a href="/students/profiles/{{ user.profile.id }}"><h4 style="margin-left:10px;"> {{n1.uploaded_by}}</h4></a>
+<<<<<<< HEAD
           <a style="margin-left: 320px;" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+=======
+          <a style="margin-left: 420px;" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+>>>>>>> 0d49cea8e5ab538566f3a9dc1765ea1d84365c3a
             <i style="color: dimgray;" class="fas fa-ellipsis-h"></i>
             </a>
            <div style="margin-left: -131px;" class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -44,6 +61,7 @@
       <hr>
     <div class="row">
       
+<<<<<<< HEAD
           <i class="far fa-thumbs-up col-sm-4">Like</i>
           <i  class="far fa-comment col-sm-4"> Comments</i>
         <i class="far fa-share-square col-sm-4 "> Share</i>
@@ -53,14 +71,29 @@
       <div class="form-group">
         <input style="border-radius: 20px;" type="text" class="form-control" placeholder="Write a comment..." name="text1">
       </div>
+=======
+        <i style="margin-left: 70px;" class="far fa-thumbs-up col-sm-3"> Like</i>
+        <i  class="far fa-comment col-sm-4"> Comments</i>
+        <i class="far fa-share-square "> Share</i>
+    </div>
+    <hr>
+    <form action="Post">
+      
+      <input style="border-radius: 20px; border: 1px solid #D3D3D3;padding-left: 10px; padding-right: 250px; margin-bottom: 8px;margin-left: 45px;" type="text" placeholder="Write a comment...">
+>>>>>>> 0d49cea8e5ab538566f3a9dc1765ea1d84365c3a
     </form>
     
   </div>
 </div>
 </div>
 <br>
+<<<<<<< HEAD
 </div>
 {% endfor %}
 </div>
 
+=======
+{% endfor %}
+</div>
+>>>>>>> 0d49cea8e5ab538566f3a9dc1765ea1d84365c3a
 {% endblock %}

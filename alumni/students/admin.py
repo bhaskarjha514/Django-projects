@@ -1,5 +1,9 @@
 from django.contrib import admin
+<<<<<<< HEAD
 from . models import Notice, Albums,Branch , Profile, FollowUser, MyPost, PostComment, PostLike
+=======
+from . models import Notice, Albums,Branch , Profile, FollowUser, MyPost, PostComment, PostLike, Memories
+>>>>>>> 0d49cea8e5ab538566f3a9dc1765ea1d84365c3a
 from django.contrib.admin.options import ModelAdmin
 from . import models
 class NoticeAdmin(ModelAdmin):
@@ -13,11 +17,17 @@ class AlbumsAdmin(ModelAdmin):
     search_fields = ["meetupplace"]
     list_filter = ["meetupplace"]
 admin.site.register(Albums,AlbumsAdmin)
+<<<<<<< HEAD
 
 admin.site.register(models.pictures)
 #admin.site.register(models.Notice)
 
 # admin.site.register(models.Memories)
+=======
+#admin.site.register(models.Notice)
+
+admin.site.register(models.Memories)
+>>>>>>> 0d49cea8e5ab538566f3a9dc1765ea1d84365c3a
 class BranchAdmin(ModelAdmin):
     list_display = ["name", "hod"]
     search_fields = ["name"]

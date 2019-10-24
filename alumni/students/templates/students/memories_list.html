@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+{% block search%}
+  <form class="form-inline my-2 my-lg-0">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="si" value="{{ request.GET.si }}">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  </form>
+
+  {% endblock %}  
+{% block content%}
+
+<u><h1>Events {% if user.is_superuser %}<a style="margin-inline-start: 1620px;" class= "btn btn-primary" href="http://127.0.0.1:8000/admin/students/notice/add/">New Event</a> {% endif %}  </h1></u>
+  <a class="btn btn-outline-dark" href="/students/memories/albums">Album</a>
+   <div class="row">
+        
+   {% for n1 in memories_list %}
+ 
+   <div class="col-sm-2">
+     
+        
+        <div class="card" style="width: 18rem; ">
+             <img src='/media/{{n1.image}}' class="card-img-top rounded-top" alt="..." style="width:286px;height:250px";>
+             <div class="card-body" >
+               <h5 class="card-title">try</h5>
+               
+               <a href="/students/notice/{{n1.id}}" class="btn btn-outline-dark">Know More</a>
+             </div>
+           </div>
+        </div>
+           
+          
+      
+   {% endfor %}
+  </div>
+  
+  
+  
+
+{% endblock %}
