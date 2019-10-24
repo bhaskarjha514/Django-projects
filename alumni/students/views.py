@@ -40,6 +40,25 @@ class ProfileUpdateView(UpdateView):
 # @method_decorator(login_required, name="dispatch")
 # class ProfileDetailView(DetailView):
 #     model = Profile
+def profiledetailview(request,pk):
+    mypost = MyPost.objects.all()
+    profiles = Profile.objects.all()
+    for i in profiles:
+        print(i.branch)
+    profile = Profile.objects.get(pk=pk) 
+    userpost = []
+    print(profile.branch)
+    for post in mypost:
+        if str(profile.user) == str(post.uploaded_by):
+            userpost.append(post)
+    context = {
+        'mypost':userpost,
+        'profilepic':profile.pic,
+        'profilename':profile.name,
+        'profileusername':profile.user,
+        'profilebranch':profile.branch
+        }
+    return render(request,'students/profiledetail.html',context)
 
 def follow(req, pk):
     user = Profile.objects.get(pk=pk)
@@ -96,7 +115,7 @@ def albumdetail(request,pk):
     try:
         albumpic = pictures.objects.get(pk=pk)
         context = {
-            'pics':albumpic.pic
+            'pics':albumpic
         }
     except pictures.DoesNotExist:
         raise Http404("Pictures doesnot exist")
@@ -136,30 +155,8 @@ class LoginView(TemplateView):
 class AboutView(TemplateView):
     template_name = "students/about.html"   
 
-# def albumdetail(request,pk):
-#     try:
-#         albumpic = pictures.objects.get(pk=pk)
-#         context = {
-#             'pics':albumpic.pic
-#         }
-#     except pictures.DoesNotExist:
-#         raise Http404("Pictures doesnot exist")
-#     return render(request, 'students/albumdetail.html',context)
-        
-def profiledetailview(request,pk):
-    mypost = MyPost.objects.all()
-    profile = Profile.objects.get(pk=pk) 
-    userpost = []
-    for post in mypost:
-        if str(profile.user) == str(post.uploaded_by):
-            userpost.append(post)
-    context = {
-        'mypost':userpost,
-        'profilepic':profile.pic,
-        'profilename':profile.name,
-        'profileusername':profile.user
-        }
-    return render(request,'students/profiledetail.html',context)
+
+
 
 
 

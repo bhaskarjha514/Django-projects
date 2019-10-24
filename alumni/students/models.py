@@ -65,8 +65,11 @@ class Albums(models.Model):
         return self.meetupplace
 
 class pictures(models.Model):
-    album = models.ForeignKey(to=Albums,on_delete=CASCADE)
+    album = models.ForeignKey(Albums,on_delete=CASCADE)
     pic = models.ImageField(upload_to="students/memories/Albums")
+    picno = models.IntegerField(null = True)
+    def __str_(self):
+        return self.picno
 
 class PostComment(models.Model):
     post = models.ForeignKey(to=MyPost, on_delete=CASCADE)

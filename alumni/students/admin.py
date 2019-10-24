@@ -1,5 +1,5 @@
 from django.contrib import admin
-from . models import Notice, Albums,Branch , Profile, FollowUser, MyPost, PostComment, PostLike
+from . models import Notice, Albums,Branch , Profile, FollowUser, MyPost, PostComment, PostLike,pictures
 from django.contrib.admin.options import ModelAdmin
 from . import models
 class NoticeAdmin(ModelAdmin):
@@ -14,7 +14,7 @@ class AlbumsAdmin(ModelAdmin):
     list_filter = ["meetupplace"]
 admin.site.register(Albums,AlbumsAdmin)
 
-admin.site.register(models.pictures)
+admin.site.register(pictures)
 #admin.site.register(models.Notice)
 
 # admin.site.register(models.Memories)
