@@ -3,13 +3,14 @@
 {% block content%}
  <h1>Profile : </h1>
  <hr>
-  <div class="col-sm-2">
-        <div class="card" style="width: 25rem; ">
-             <img src="/media/{{profile.pic}}" class="card-img-top rounded-top" alt="...">
+  <div class="col-sm-6 offset-sm-4">
+        <div class="card" style="width: 30rem; ">
+          <a href="/media/{{profile.pic}}"> <img style="width: 100%; height: aouto;border-radius: 3%;" src="/media/{{profile.pic}}" class="card-img-top rounded-top" alt="..."></a>
+            
              <div class="card-body" >
                
-                   <h5 class="card-title" style="background-color:silver;">Name : {{profile.name}}</h5>
-                   <h5 class="card-title">Username : {{profile.user}}</h5>
+                   <h5 style="text-align: center; background-color:silver;" class="card-title">Name : {{profile.name}}</h5>
+                   <h5 class="card-title">username : {{profile.user}}</h5>
                    <h5 class="card-title">Branch : {{profile.branch}}</h5>
                    <h5 class="card-title">Current Job : {{profile.current_job}}</h5>
                    <h5 class="card-title">Life Skills : {{profile.skill}}</h5>
@@ -19,10 +20,11 @@
                    <h5 class="card-title">Address : {{profile.address}}</h5>
                    <h5 class="card-title">Status : {{profile.status}}</h5>
                    <p class="card-text"><b> Description : {{profile.description}}</b></p>
+                  
                
                   <br>
-               
                <a href="/students/profiles" class="btn btn-outline-dark">Back</a>
+               <a href="/students/profiles/{{profile.id}}/post" class="btn btn-outline-dark">Post</a>
              </div>
            </div>
         

@@ -12,13 +12,18 @@
             <hr>
           </div>
         </div>
+    <!-- Added    -->
+    <div class="col-sm-6 offset-sm-5">
         <form enctype="multipart/form-data" method="POST" action="">
         {% csrf_token %}
         {{form | crispy}} <br>
+        
         <input class="btn btn-primary" type="submit">
+         
         <a class="btn btn-success" href="/accounts/register/">Sign Up</a>
-        <a class="btn btn-danger" href="/accounts/password_reset_email">Forgot Password</a>
+        <a class="btn btn-danger" href="/accounts/password/reset">Forgot Password</a>
         </form>
+      </div>
         </main>
 </body>
 

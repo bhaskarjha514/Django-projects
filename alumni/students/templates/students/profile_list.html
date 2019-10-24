@@ -9,36 +9,37 @@
   </form>
 
   {% endblock %}  
-{% block content%}
-<div class="p-5">
-  <h1> Profiles : </h1>
- 
   
-  <hr>
-<table class="table  my-3">
-    <thead class="thead-dark">
-      <tr>
-        <th>Name</th>
-        <th>Age</th>
-        <th>Gender</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    {% for n1 in profile_list %}
-       <tr>
-         <td>{{n1.name}}</td>
-         <td>{{n1.age}}</td>
-         <td>{{n1.gender}}</td>
-         <td>
-           <a class="btn btn-dark btn-sm" href="/students/profiles/{{n1.id}}">See Profile</a>
-           <a style="margin-inline-start: 10px" class="btn btn-primary btn-sm" href="/students/profiles/follow/{{n1.id}}">Request <span style="padding-inline-start: 4px" class="fa fa-user-plus"></span></a>
-       
-         </td>
-        </tr>
+{% block content %}
+<h1>Friends :</h1>
+<hr>
 
-    {% endfor %}
+<div class="p-5">
+    {% for n1 in profile_list %}
+  <div class="col-sm-5 offset-sm-4"> 
+<div class="card w-50">
   
- </table> 
-   </div>
- 
+  <div class="card-body;">
+     <div class="row">
+      <a style="margin-top: 5px;" href="/students/profiles/{{n1.id}}"><img style="width: 60px; height:60px;border-radius: 50%; margin-left:20px;" src='/media/{{n1.pic}}' alt=""></a>
+     <div class="col">
+        <a style="margin-left: 20px;" href="/students/profiles/{{n1.id}}">{{n1.name}}</a> <br>
+       
+        <h6 style="margin-left:20px;">Current job:- {{n1.current_job}}</h6>
+     </div>
+      
+    </div>
+    
+    <div class="row"> 
+        <h6 style="margin-left:39px;">{{n1.branch}}</h6>
+        <a style=" margin-left: 200px;" class="btn btn-primary btn-sm" href="/students/profiles/follow/{{n1.id}}">Request <span style="padding-inline-start: 4px" class="fa fa-user-plus"></span></a>
+      
+    </div>
+    
+  </div>
+</div>
+</div>
+<br>
+{% endfor %}
+</div>
 {% endblock %}

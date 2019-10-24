@@ -1,14 +1,23 @@
 from django.contrib import admin
-from . models import Notice, Branch , Profile, FollowUser, MyPost, PostComment, PostLike
+from . models import Notice, Albums,Branch , Profile, FollowUser, MyPost, PostComment, PostLike
 from django.contrib.admin.options import ModelAdmin
-
+from . import models
 class NoticeAdmin(ModelAdmin):
     list_display = ["subject", "cr_date"]
     search_fields = ["subject", "msg"]
     list_filter = ["cr_date"]
-#admin.site.register(models.Notice)
 admin.site.register(Notice, NoticeAdmin)
 
+class AlbumsAdmin(ModelAdmin):
+    list_display = ["meetupplace","image"]
+    search_fields = ["meetupplace"]
+    list_filter = ["meetupplace"]
+admin.site.register(Albums,AlbumsAdmin)
+
+admin.site.register(models.pictures)
+#admin.site.register(models.Notice)
+
+# admin.site.register(models.Memories)
 class BranchAdmin(ModelAdmin):
     list_display = ["name", "hod"]
     search_fields = ["name"]
