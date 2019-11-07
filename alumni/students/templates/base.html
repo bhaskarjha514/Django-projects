@@ -1,0 +1,136 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.6/css/all.css">
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/logo3.png'%}" sizes="100x100"/>
+    
+    <!-- <link rel="stylesheet" href="/static/style.css"/> -->
+    {% block design%}
+
+    {% endblock %}
+   <style>
+     
+     
+     /* body{
+       background : "123.jpg";
+        background-repeat:no-repeat;
+       background-size:cover;
+     } */
+  </style>
+    <title>Arvalians Alumni</title>
+    {% block style%}
+
+    {% endblock %}
+    
+  </head>
+  <body  {% block backgroundcss%}
+
+  {% endblock %} >
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <a class="navbar-brand" href="#">Alumni DataBase</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/students/home">Home <i class="fa fa-home" aria-hidden="true"></i> <span class="sr-only">(current)</span></a>
+            </li>
+            {% if user.is_authenticated %}
+            <li class="nav-item active">
+                <a class="nav-link" href="/students/notice">Events <span class="sr-only">(current)</span></a>
+              </li>
+              {% else %}
+              <li class="nav-item active">
+                <a class="nav-link" href="/accounts/login">Events  <span class="sr-only">(current)</span></a>
+              </li>
+             {% endif %}
+             <li class="  nav-item active">
+               <a class="nav-link" href="/students/memories">Memories</a>
+             </li>
+              <!-- <li class="nav-item">
+                  {% if user.is_authenticated %}
+                 <a class="nav-link" href="/students/profiles">Profile</a>
+                 {% endif %}
+               </li> -->
+             <li class="nav-item active">
+              {% if user.is_authenticated %}
+              <a class="nav-link" href="/accounts/logout">Logout <i class="fa fa-sign-out-alt" aria-hidden="true"></i> <span class="sr-only">(current)</span></a>
+              
+              {% else %}
+              <a class="nav-link" href="/accounts/login">Login <i class="fas fa-sign-in-alt"></i>  <span class="sr-only">(current)</span></a>
+              {% endif %}
+             </li>
+             <li class="nav-item">
+                <!-- {% if user.is_authenticated %}
+              <a class="nav-link" href="/students/mypost/">My Post</a>
+              {% endif %} -->
+             </li>
+             <li class="nav-item active">
+               {% if user.is_superuser %}
+                <a class="nav-link" href="/admin">Admin <span class="sr-only">(current)</span></a>
+               {% else %}
+                  {% if user.is_authenticated %}
+                  <a class="nav-link" href="/students/mypost/">My Post <span class="sr-only">(current)</span></a>
+                  
+                  
+                
+                  <li class="nav-item dropdown nav-item active" >
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Profile <span class="sr-only">(current)</span>
+                      </a>
+                     <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="margin-left: -50px;">
+                        <a onMouseOver="this.style.color='#FFFFFF'; this.style.backgroundColor='#0f5ef2'"onMouseOut="this.style.color='#000000';this.style.backgroundColor='#FFFFFF'"  class="dropdown-item" href="/students/profiles/{{ user.profile.id }}">View As<span class="fa fa-user" style="padding-inline-start: 8px"></span> </a>
+            
+                        <a onMouseOver="this.style.color='#FFFFFF'; this.style.backgroundColor='#0f5ef2'"onMouseOut="this.style.color='#000000';this.style.backgroundColor='#FFFFFF'" class="dropdown-item" href="/students/profile/edit/{{ user.profile.id }}">Edit Profile<span style="padding-inline-start: 8px" class="fas fa-address-card"></span> </a>
+                     
+                    </li>
+              
+               {% endif %}
+               {% endif %} 
+            
+            <li class="nav-item active">
+              <a class="nav-link" href="/students/about">About us <span class="sr-only">(current)</span>  </a>
+            </li>
+            {% if user.is_authenticated %}
+            <li class="nav-item active">
+            
+          </li>
+          <li class="nav-item active">
+          <a class="nav-link" href="/students/profiles">Friends <span style="padding-inline-start: 4px" class="fa fa-user"></span> </a>
+          </li>
+          {% endif %}
+          </ul>
+
+          
+          {% block search %}
+
+          {% endblock %}
+        </div>
+      </nav>
+    
+       {% block content%}
+       {% endblock %}
+
+       <!-- <footer class="myfooter text-center p-2">
+         <p> Copyright @ Alumni DataBase</p> -->
+
+       </footer>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    {% block script%}
+
+    {% endblock %}
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
